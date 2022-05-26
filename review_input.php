@@ -42,10 +42,15 @@ foreach ($result as $record) {  //HTMLの生成
     <thead>
     <div class='row justify-content-center'>
       
-      <div class=col-2>{$record['name']}</div>
-      <div class=col-2>{$record['text']}</div>
-      <div class=col-2>{$record['time']}</div>
-      
+      <div class=col-1>{$record['name']}</div>
+      <div class=col-4>{$record['text']}</div>
+      <div class=col-3>{$record['time']}</div>
+      <div class=col-1>
+        <a href='user_edit.php?id={$record["id"]}'>edit</a>
+      </div>
+      <div class=col-1>
+        <a href='review_delete.php?id={$record['id']}'>delete</a>
+      </div>
       
     </div>
     </thead>
