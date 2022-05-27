@@ -1,5 +1,6 @@
 <?php
-
+// $id =$_GET["id"];
+// echo "GET:".$id;
 // DB接続
 // todo_read.php
 //databacenameはgsacf_l07_01
@@ -44,12 +45,18 @@ foreach ($result as $record) {  //HTMLの生成
     <thead>
     <div class='row justify-content-center'>
       
-      <div class=col-2>{$record['reviewer_name']}</div>
+      <div class=col-1>{$record['reviewer_name']}</div>
       <div class=col-2>{$record['shop_name']}</div>
       <div class=col-2>{$record['genre']}</div>
       <div class=col-2>{$record['address']}</div>
       <div class=col-2>{$record['word']}</div>
-      <div class=col-2><a href='review_topik.php?id=".$record['shops_id']."'>詳細へ</a></div>
+      <div class=col-1><a href='review_topik.php?id=".$record['shops_id']."'>詳細へ</a></div>
+      <div class=col-1>
+        <a href='user_edit.php'>edit</a>
+      </div>
+      <div class=col-1>
+        <a href='review_delete2.php?id={$record['shops_id']}' >delete</a>
+      </div>
       
     </div>
     </thead>
@@ -110,13 +117,15 @@ foreach ($result as $record) {  //HTMLの生成
         <a href="review_input.php">topページ</a>
         <table>
           <thead>
-            <div class="row justify-content-center font2">
-              <div class="col-2 font2">投稿者の名前</div>
-              <div class="col-2 font2">お店の名前</div>
-              <div class="col-2 font2">お店のジャンル</div>
-              <div class="col-2 font2">お店の住所</div>
-              <div class="col-2 font2">お店の情報</div>
-              <div class="col-2 font2">詳細情報</div>
+            <div class="row justify-content-center ">
+              <div class="col-1 ">投稿者名</div>
+              <div class="col-2 ">お店の名前</div>
+              <div class="col-2 ">お店のジャンル</div>
+              <div class="col-2 ">お店の住所</div>
+              <div class="col-2 ">お店の情報</div>
+              <div class="col-2 ">詳細情報</div>
+              <div class="col-1 "></div>
+              
             </div>
           </thead>
           <tbody>

@@ -49,7 +49,7 @@ foreach ($result as $record) {  //HTMLの生成
         <a href='user_edit.php?id={$record["id"]}'>edit</a>
       </div>
       <div class=col-1>
-        <a href='review_delete.php?id={$record['id']}'>delete</a>
+        <a href='review_delete.php?id={$record['id']}' >delete</a>
       </div>
       
     </div>
