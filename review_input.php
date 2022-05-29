@@ -84,6 +84,7 @@ foreach ($result as $record) {  //HTMLの生成
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/jquery.bxslider.css">
   <link rel="stylesheet" href="style.css">
   <title>DB連携型todoリスト（入力画面）</title>
 </head>
@@ -162,10 +163,11 @@ foreach ($result as $record) {  //HTMLの生成
           </div>
         </div>
       </div>
-      <form action="review_create.php" method="POST">>
+      <form action="review_create.php" method="POST" enctype="multipart/form-data">
         <fieldset>
           <legend>おすすめのお店を教えてください</legend>
           <a href="review_read.php">一覧画面</a>
+          <p class="cms-thumb"><img src="https://placehold.jp/c9c9c9/ffffff/600×600.png?text=%E3%83%80%E3%83%9F%E3%83%BC%E7%94%BB%E5%83%8F" width="200"></p>
     
         <div class="row">
             <div class="col-6">
@@ -230,7 +232,8 @@ foreach ($result as $record) {  //HTMLの生成
             
                 <input type="file"
                  id="avatar" name="img"
-                 accept="image/png, image/jpeg">
+                 class="cms-item"
+                 accept="image/*">
                  </div>
                  <div>
                   <button>submit</button>
@@ -249,6 +252,30 @@ foreach ($result as $record) {  //HTMLの生成
     </div>
   </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/jquery-3.0.0.js"></script>
+<script>
+//---------------------------------------------------
+//画像サムネイル表示
+//---------------------------------------------------
+// アップロードするファイルを選択
+$('input[type=file]').change(function() {
+  //選択したファイルを取得し、file変数に格納
+  var file = $(this).prop('files')[0];
+  // 画像以外は処理を停止
+  if (!file.type.match('image.*')) {
+    // クリア
+    $(this).val(''); //選択されてるファイルを空にする
+    $('.cms-thumb > img').html(''); //画像表示箇所を空にする
+    return;
+  }
+  // 画像表示
+  var reader = new FileReader(); //1
+  reader.onload = function() {   //2
+    $('.cms-thumb > img').attr('src', reader.result);
+  }
+  reader.readAsDataURL(file);    //3
+});
+</script>
 </body>
 
 </html>

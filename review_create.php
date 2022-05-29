@@ -8,7 +8,7 @@ if (
   !isset($_POST['address']) || $_POST['address']=='' ||
   !isset($_POST['genre']) || $_POST['genre']=='' ||
   !isset($_POST['word']) || $_POST['word']==''||
-  !isset($_POST['img']) || $_POST['img']==''
+  !isset($_FILES["img"]["name"]) || $_FILES["img"]["name"]==''
 ) {
   exit('ParamError');
 }
@@ -19,13 +19,22 @@ $url = $_POST['url'];
 $address= $_POST['address'];
 $genre=$_POST['genre'];
 $word = $_POST['word'];
-$img= $_POST['img'];
+$img  = $_FILES["img"]["name"]; 
+//1-2. FileUpload処理
+$upload = "img2/"; //画像アップロードフォルダへのパス
+//アップロードした画像を../img/へ移動させる記述↓
+if(move_uploaded_file($_FILES['img']['tmp_name'], $upload.$img)){
+  //FileUpload:OK
+} else {
+  //FileUpload:NG
+  echo "Upload failed";
+  echo $_FILES['img']['error'];
+}
 
 // DB接続この部分はnameとかuser,pwdとかその時で違う。
 $dbn ='mysql:dbname=review_base;charset=utf8mb4;port=3306;host=localhost';
 $user = 'root';
 $pwd = '';
-
 // DB接続この部分は毎回同じ
 try {
   $pdo = new PDO($dbn, $user, $pwd);

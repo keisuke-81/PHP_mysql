@@ -39,27 +39,9 @@ if($status == false){
   exit("ErrorQuery:".$error[2]);
 }else{
     $row = $stmt->fetch();
- //取得した画像バイナリデータをbase64で変換。
-    
 
-//   while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
-//     $view .='<p>';
-    
-//     $view .=$result["shop_name"];
-    
-//     $view .=$result["word"];
-//     //$view .=$result["reviewer_name"]." ".$result["tel"]."   ".$result["url"]."   ".$result["address"]."   ".$result["word"];
-//     $view .='</p>';
-//   }
 }
-//$img = base64_encode($row['img']);
-//header("Content-Type: image/jpg");
-//echo $row['img'];
-// header('Content-type: ' . $contents_type[$img['type']]);
-//     echo $['image'];
-
-// $name ="name";
-// echo $name."<br>";
+echo $row['img'];
 ?>
 <?php
 $dbn ='mysql:dbname=review_base;charset=utf8mb4;port=3306;host=localhost';
@@ -155,7 +137,8 @@ foreach ($result as $record) {  //HTMLの生成
             <div class="row  justify-content-center">
                 <div class="col-6 white_back font2"> 
                     <div class="margin_b">
-                        <h1>店舗名:<?=$row["shop_name"]?></h1>
+                      <p class="col pruducts-thumb "><img src="img2/<?=$row['img']?>" width="300"></p>
+                        <h3>店舗名:<?=$row["shop_name"]?></h3>
                         <div>(紹介してくれた人)
                         <br>  
                         <?=$row["reviewer_name"]?>さん</div>
