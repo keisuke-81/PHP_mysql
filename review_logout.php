@@ -5,5 +5,5 @@ if (isset($_COOKIE[session_name()])) {
   setcookie(session_name(), '', time() - 42000, '/');
 }
 session_destroy();
-header('Location:review_login.php');
+header('Location:free_user1.php');
 exit();

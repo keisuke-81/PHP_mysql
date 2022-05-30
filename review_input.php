@@ -107,6 +107,21 @@ foreach ($result as $record) {  //HTMLの生成
   <div class="wrapper">
     <div class="container black">
       ようこそ <?="{$_SESSION['username']}({$_SESSION['is_admin']})"?> さん
+       <!-- 管理者ログイン -->
+    <form action="review_login_act2.php" method="POST">
+    <fieldset>
+      <div>
+         <input type="hidden" name="username" value='<?="{$_SESSION['username']}"?>'>
+      </div>
+      <div>
+         管理者パスワード:<input type="password" name="password">
+      </div>
+      <div>
+        <button>管理者画面へLogin</button>
+      </div>
+     
+    </fieldset>
+  </form>
       <div class="row justify-content-center">
 
         <div class="col-4">
@@ -164,8 +179,10 @@ foreach ($result as $record) {  //HTMLの生成
       </div>
       <form action="review_create.php" method="POST" enctype="multipart/form-data">
         <fieldset>
-          <legend>おすすめのお店を教えてください</legend>
-          <a href="review_read.php">一覧画面</a>
+      
+   
+    <legend>おすすめのお店を教えてください</legend>
+          
       <div class="row">
         <p class="cms-thumb col-4"><img src="img/logo2.jpg" width="300"></p>
          <!-- <div class="col-6">みんなの声</div> -->
@@ -192,7 +209,7 @@ foreach ($result as $record) {  //HTMLの生成
                     投稿者:
                   </div>
                   <div class="col-1">
-                    <input type="name" name="reviewer_name">
+                    <input type="name" name="reviewer_name" value ='<?="{$_SESSION['username']}"?> さん' readonly>
                   </div>
                 </div>
                 <div class="row">

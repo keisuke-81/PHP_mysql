@@ -1,8 +1,7 @@
 <?php
 //GETでIDを取得
-include("functions.php");
-session_start();
-check_session_id();
+include("../functions.php");
+
 $id =$_GET["id"];
 echo "GET:".$id;
 
@@ -114,7 +113,7 @@ foreach ($result as $record) {  //HTMLの生成
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <title>Document</title>
 </head>
 <body>
@@ -140,8 +139,7 @@ foreach ($result as $record) {  //HTMLの生成
             <div class="row  justify-content-center">
                 <div class="col-6 white_back font2"> 
                     <div class="margin_b">
-                      ようこそ <?="{$_SESSION['username']}({$_SESSION['is_admin']})"?> さん
-                      <p class="col pruducts-thumb "><img src="img2/<?=$row['img']?>" width="300"></p>
+                      <p class="col pruducts-thumb "><img src="../img2/<?=$row['img']?>" width="300"></p>
                         <h3>店舗名:<?=$row["shop_name"]?></h3>
                         <div>(紹介してくれた人)
                         <br>  
@@ -154,22 +152,22 @@ foreach ($result as $record) {  //HTMLの生成
                         <div>(URL)&nbsp;&nbsp;<?=$row["url"]?></div>
                         <div>(住所)&nbsp;&nbsp;<?=$row["address"]?></div>
                     </div>
-                    <form action="sql_data.php?id=<?=$id?>" method="POST">
+                    <form action="../sql_data.php?id=<?=$id?>" method="POST">
                     <fieldset>
                       <legend class="font-red">あなたの口コミ募集中！</legend>
                       <div class="disno">
                         <label for="name">店舗ナンバー</label>
 
-                        <input id="name" type="text" name="idn" value="<?=$id?>" readonly>
+                        <input id="name" type="text" name="idn" value="<?=$id?>" >
                       </div>
                       <div>
-                        YOUR NAME: <input type="name" name="name"  value='<?="{$_SESSION['username']}"?>'>
+                        YOUR NAME: <input type="name" name="reviewer_name" >
                       </div>
                       <div>
-                        店舗の名前は <input type="name" name="shop_name" value="<?=$row["shop_name"]?>">
+                        店舗の名前は <input type="name" name="shop_name" value="<?=$row["shop_name"]?>" readonly>
                       </div>
                       <div>
-                        店舗ジャンル<input type="name" name="genre" value="<?=$row["genre"]?>">
+                        店舗ジャンル<input type="name" name="genre" value="<?=$row["genre"]?>" readonly>
                       </div>
                       <div>
                            <textarea name="text" id="" cols="40" rows="5"></textarea>
@@ -182,7 +180,7 @@ foreach ($result as $record) {  //HTMLの生成
                        <button>入力する</button>
                       </div>
                     </fieldset>
-                        <a href='review_input.php'>トップ画面へ</a>
+                        <a href='../free_user1.php'>トップ画面へ</a>
                       <!-- </form>
                       <img src="<?=$row['img']?>"> -->
                 </div>
@@ -191,7 +189,7 @@ foreach ($result as $record) {  //HTMLの生成
                   <h2>(みんなの声)</h2>
                   <br>
                   <?=$output?></div>
-                  <a href='review_topik.php'>ページトップへ</a>
+                  
             </div>
         </div>
     </div>

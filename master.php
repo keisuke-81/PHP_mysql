@@ -1,8 +1,5 @@
 <?php
 include("shop_no.php");
-include("functions.php");
-session_start();
-check_session_id();
 
 ?>
 
@@ -19,7 +16,7 @@ check_session_id();
 
 <body>
   <div class="row top_h ">
-    <h1 class="col-5 display-1">foods-LINKS-all-shop</h1>
+    <h1 class="col-5 display-1">foods-LINKS-master</h1>
     <ul class="col-5 nav justify-content-end">
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="#">Active</a>
@@ -35,16 +32,15 @@ check_session_id();
     </li>
     </ul>
   </div>
-  <div class="wrapper">
+  <div class="wrapper2">
     <div class="container ">
       <div class="row white_back justify-content-center">
-        <legend>みんなの声（口コミ）一覧   新しく登録された順番です。</legend>
-        <a href="review_input.php">topページ</a>
-        <table>
-          <thead>
-            <div><?= $output ?></div>
-          </thead>
-        </table>
+        <div class="d-grid gap-2">
+         <a href="review_read.php"><button class="btn btn-lg btn-warning" type="button">Button</button></a> 
+         <a href="review_read2.php"><button class="btn btn-lg btn-warning" type="button">Button</button></a> 
+          <a href="review_read.php"><button class="btn btn-lg btn-warning" type="button">Button</button></a> 
+    </div>
+        
       </div>
     </div>
   </div>

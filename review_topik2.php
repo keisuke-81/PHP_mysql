@@ -1,8 +1,5 @@
 <?php
 //GETでIDを取得
-include("functions.php");
-session_start();
-check_session_id();
 $id =$_GET["id"];
 echo "GET:".$id;
 
@@ -140,7 +137,6 @@ foreach ($result as $record) {  //HTMLの生成
             <div class="row  justify-content-center">
                 <div class="col-6 white_back font2"> 
                     <div class="margin_b">
-                      ようこそ <?="{$_SESSION['username']}({$_SESSION['is_admin']})"?> さん
                       <p class="col pruducts-thumb "><img src="img2/<?=$row['img']?>" width="300"></p>
                         <h3>店舗名:<?=$row["shop_name"]?></h3>
                         <div>(紹介してくれた人)
@@ -163,7 +159,7 @@ foreach ($result as $record) {  //HTMLの生成
                         <input id="name" type="text" name="idn" value="<?=$id?>" readonly>
                       </div>
                       <div>
-                        YOUR NAME: <input type="name" name="name"  value='<?="{$_SESSION['username']}"?>'>
+                        YOUR NAME: <input type="name" name="name">
                       </div>
                       <div>
                         店舗の名前は <input type="name" name="shop_name" value="<?=$row["shop_name"]?>">

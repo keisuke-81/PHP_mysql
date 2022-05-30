@@ -1,4 +1,7 @@
 <?php
+include("functions.php");
+session_start();
+check_session_id();
 $id =$_GET['id'];
 echo "GET:".$id;
 
@@ -49,7 +52,5 @@ try {
   echo json_encode(["sql error" => "{$e->getMessage()}"]);
   exit();
 }
-header("Location:review_topik.php?id=$id
-");
+header("Location:review_topik.php?id=$id");
 exit();
-
