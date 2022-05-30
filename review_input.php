@@ -1,7 +1,9 @@
 <?php
 // $id =$_GET["genre"];
 // echo "GET:".$id;
-
+include("functions.php");
+session_start();
+check_session_id();
 $dbn ='mysql:dbname=review_base;charset=utf8mb4;port=3306;host=localhost';
 $user = 'root';
 $pwd = '';
@@ -97,13 +99,16 @@ foreach ($result as $record) {  //HTMLの生成
       <a class="nav-link" href="#">map</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      <a class="nav-link" href="review_logout.php" tabindex="-1" aria-disabled="true">logout</a>
     </li>
+    
     </ul>
   </div>
   <div class="wrapper">
     <div class="container black">
+      ようこそ <?="{$_SESSION['username']}({$_SESSION['is_admin']})"?> さん
       <div class="row justify-content-center">
+
         <div class="col-4">
           <div>
             <img src="img/j1.jpg" alt="和食" class="top_img">

@@ -52,7 +52,7 @@ foreach ($result as $record) {  //HTMLの生成
       <div class=col-2>{$record['word']}</div>
       <div class=col-1><a href='review_topik.php?id=".$record['shops_id']."'>詳細へ</a></div>
       <div class=col-1>
-        <a href='user_edit.php'>edit</a>
+        <a href='read_edit_input.php?id={$record['shops_id']}' >edit</a>
       </div>
       <div class=col-1>
         <a href='review_delete2.php?id={$record['shops_id']}' >delete</a>
