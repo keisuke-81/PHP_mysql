@@ -47,7 +47,7 @@ margin-left: 10%;
 }
 
 .margin_b{
-    margin-bottom: 25%;
+    margin-bottom: 5%;
 }
 
 .disno{
@@ -55,5 +55,9 @@ margin-left: 10%;
 }
 body{
     background-color: rgb(66, 58, 58);
+}
+
+.font-red{
+    color: red;
 }
 

@@ -17,7 +17,7 @@ try {
 // SQL作成&実行
 // todo_read.php
 
-$sql = 'SELECT * FROM shop_no'; 
+$sql = 'SELECT * FROM shop_no ORDER BY time DESC LIMIT 5'; 
 $stmt = $pdo->prepare($sql);
 //$stmt->bindValue($id,1,PDO::PARAM_STR);
 
@@ -39,22 +39,16 @@ $output = "";
 foreach ($result as $record) {  //HTMLの生成
   $output .= "
   
-    <thead>
-    <div class='row justify-content-center'>
+   
+    <div class=row>
       
-      <div class=col-1>{$record['name']}</div>
-      <div class=col-4>{$record['text']}</div>
-      <div class=col-3>{$record['time']}</div>
-      <div class=col-1>
-        <a href='user_edit.php?id={$record["id"]}'>edit</a>
-      </div>
-      <div class=col-1>
-        <a href='review_delete.php?id={$record['id']}' onClick='confirm('リンク先は...');' >delete</a>
-      </div>
-      
+      <div class=col-3>{$record['shop_name']}</div>
+      <div class=col-2>{$record['genre']}</div>
+      <div class=col>{$record['text']}</div>
+      <div class=col-2>{$record['name']}さん</div>
+     
     </div>
-    </thead>
-    </tr>
+  
   ";
 }
 
@@ -167,9 +161,25 @@ foreach ($result as $record) {  //HTMLの生成
         <fieldset>
           <legend>おすすめのお店を教えてください</legend>
           <a href="review_read.php">一覧画面</a>
-          <p class="cms-thumb"><img src="https://placehold.jp/c9c9c9/ffffff/600×600.png?text=%E3%83%80%E3%83%9F%E3%83%BC%E7%94%BB%E5%83%8F" width="200"></p>
-    
-        <div class="row">
+      <div class="row">
+        <p class="cms-thumb col-4"><img src="img/logo2.jpg" width="300"></p>
+         <!-- <div class="col-6">みんなの声</div> -->
+        <div class="col-6">
+          <p>みんなの声</p>
+          <div class="row">
+            <div class=col-3>(店名)</div>
+            <div class=col-2>(ジャンル)</div>
+            <div class=col>(口コミ)</div>
+            <div class=col-2>(投稿者)</div>
+          </div>
+          <br>
+          <div class="row">
+            <?= $output ?>
+          </div>
+        </div>
+      </div>   
+      <div class="row">
+         
             <div class="col-6">
               <div col-5>
                 <div class="row">
@@ -241,8 +251,7 @@ foreach ($result as $record) {  //HTMLの生成
               </div>
             </div>
            
-              <!-- <div class="col-6">みんなの声</div> -->
-              <div><?= $output ?></div>
+             
           
         </div>
           

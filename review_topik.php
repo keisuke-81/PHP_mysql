@@ -54,7 +54,7 @@ try {
   echo json_encode(["db error" => "{$e->getMessage()}"]);
   exit();
 }
-$sql = 'SELECT * FROM shop_no WHERE shops_no = :id';
+$sql = 'SELECT * FROM shop_no WHERE shops_no = :id ORDER BY time DESC LIMIT 7 ';
 // var_dump($sql);
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':id', $id, PDO::PARAM_STR); 
@@ -146,20 +146,26 @@ foreach ($result as $record) {  //HTMLの生成
                         <br>
                         <?=$row["word"]?></div>
                         <br>
-                        <div>電話番号:&nbsp;<?=$row["tel"]?></div>
-                        <div>URL:&nbsp;<?=$row["url"]?></div>
-                        <div>住所:&nbsp;<?=$row["address"]?></div>
+                        <div>(TEL)&nbsp;&nbsp;<?=$row["tel"]?></div>
+                        <div>(URL)&nbsp;&nbsp;<?=$row["url"]?></div>
+                        <div>(住所)&nbsp;&nbsp;<?=$row["address"]?></div>
                     </div>
                     <form action="sql_data.php?id=<?=$id?>" method="POST">
                     <fieldset>
-                      <legend>あなたの口コミ募集中！</legend>
+                      <legend class="font-red">あなたの口コミ募集中！</legend>
                       <div class="disno">
                         <label for="name">店舗ナンバー</label>
 
                         <input id="name" type="text" name="idn" value="<?=$id?>" readonly>
                       </div>
                       <div>
-                        name: <input type="name" name="name">
+                        YOUR NAME: <input type="name" name="name">
+                      </div>
+                      <div>
+                        店舗の名前は <input type="name" name="shop_name" value="<?=$row["shop_name"]?>">
+                      </div>
+                      <div>
+                        店舗ジャンル<input type="name" name="genre" value="<?=$row["genre"]?>">
                       </div>
                       <div>
                            <textarea name="text" id="" cols="40" rows="5"></textarea>

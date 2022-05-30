@@ -19,7 +19,7 @@ try {
 // SQL作成&実行
 // todo_read.php
 
-$sql = 'SELECT * FROM shops';
+$sql = 'SELECT * FROM shops ORDER BY time DESC';
 $stmt = $pdo->prepare($sql);
 
 $status = $stmt->execute();
@@ -60,6 +60,7 @@ foreach ($result as $record) {  //HTMLの生成
       
     </div>
     </thead>
+    <br><br>
   ";
 }
 
@@ -113,7 +114,7 @@ foreach ($result as $record) {  //HTMLの生成
   <div class="wrapper">
     <div class="container ">
       <div class="row white_back justify-content-center">
-        <legend>おすすめのお店一覧   登録された順番です。</legend>
+        <legend>おすすめのお店一覧   新しく登録された順番です。</legend>
         <a href="review_input.php">topページ</a>
         <table>
           <thead>
@@ -128,10 +129,12 @@ foreach ($result as $record) {  //HTMLの生成
               
             </div>
           </thead>
+          <br><br>
           <tbody>
             <!-- ここに<tr><td>deadline</td><td>todo</td><tr>の形でデータが入る -->
               <?= $output ?>
           </tbody>
+          
         </table>
       </div>
     </div>

@@ -17,7 +17,7 @@ try {
 // SQL作成&実行
 // todo_read.php
 
-$sql = 'SELECT * FROM shops WHERE genre LIKE "和食%" '; 
+$sql = 'SELECT * FROM shops WHERE genre LIKE "和食%" ORDER BY time DESC'; 
 $stmt = $pdo->prepare($sql);
 //$stmt->bindValue($id,1,PDO::PARAM_STR);
 
