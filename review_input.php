@@ -48,7 +48,7 @@ foreach ($result as $record) {  //HTMLの生成
       <div class=col-2>{$record['genre']}</div>
       <div class=col>{$record['text']}</div>
       <div class=col-2>{$record['name']}さん</div>
-     
+  
     </div>
   
   ";
