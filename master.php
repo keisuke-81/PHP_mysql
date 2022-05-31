@@ -38,7 +38,7 @@ include("shop_no.php");
         <div class="d-grid gap-2">
          <a href="review_read.php"><button class="btn btn-lg btn-warning" type="button">Button</button></a> 
          <a href="review_read2.php"><button class="btn btn-lg btn-warning" type="button">Button</button></a> 
-          <a href="review_read.php"><button class="btn btn-lg btn-warning" type="button">Button</button></a> 
+          <a href="user_file.php"><button class="btn btn-lg btn-warning" type="button">Button</button></a> 
     </div>
         
       </div>

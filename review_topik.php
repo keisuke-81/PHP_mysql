@@ -145,7 +145,7 @@ foreach ($result as $record) {  //HTMLの生成
                         <h3>店舗名:<?=$row["shop_name"]?></h3>
                         <div>(紹介してくれた人)
                         <br>  
-                        <?=$row["reviewer_name"]?>さん</div>
+                        <?=$row["reviewer_name"]?></div>
                         <div>(紹介文)
                         <br>
                         <?=$row["word"]?></div>
