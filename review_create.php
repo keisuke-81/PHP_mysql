@@ -23,10 +23,13 @@ $img  = $_FILES["img"]["name"];
 //1-2. FileUpload処理
 $upload = "img2/"; //画像アップロードフォルダへのパス
 //アップロードした画像を../img/へ移動させる記述↓
+//move_uploaded_file(string $from, string $to): bool
+//$_FILES['img']['tmp_name']は仮置き場のようなもの、$imgを一旦仮置き場においてそこから$uploadに移動します。
 if(move_uploaded_file($_FILES['img']['tmp_name'], $upload.$img)){
   //FileUpload:OK
 } else {
   //FileUpload:NG
+  //エラーが出た場合
   echo "Upload failed";
   echo $_FILES['img']['error'];
 }

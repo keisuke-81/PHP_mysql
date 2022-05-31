@@ -1,7 +1,8 @@
 <?php
 //GETでIDを取得
 include("../functions.php");
-
+session_start();
+check_session_id();
 $id =$_GET["id"];
 echo "GET:".$id;
 

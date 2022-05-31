@@ -36,9 +36,9 @@ include("shop_no.php");
     <div class="container ">
       <div class="row white_back justify-content-center">
         <div class="d-grid gap-2">
-         <a href="review_read.php"><button class="btn btn-lg btn-warning" type="button">Button</button></a> 
-         <a href="review_read2.php"><button class="btn btn-lg btn-warning" type="button">Button</button></a> 
-          <a href="user_file.php"><button class="btn btn-lg btn-warning" type="button">Button</button></a> 
+         <a href="review_read.php"><button class="btn btn-lg btn-warning" type="button">店舗データ管理</button></a> 
+         <a href="review_read2.php"><button class="btn btn-lg btn-warning" type="button">口コミデータ管理</button></a> 
+          <a href="user_file.php"><button class="btn btn-lg btn-warning" type="button">ユーザーデータ管理</button></a> 
     </div>
         
       </div>

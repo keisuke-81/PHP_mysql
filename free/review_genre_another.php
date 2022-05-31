@@ -48,7 +48,7 @@ foreach ($result as $record) {  //HTMLの生成
       <div class=col-2>{$record['genre']}</div>
       <div class=col-2>{$record['address']}</div>
       <div class=col-2>{$record['word']}</div>
-      <div class=col-2><a href='review_topik.php?id=".$record['shops_id']."'>詳細へ</a></div>
+      <div class=col-2><a href='review_topik.php?id=../".$record['shops_id']."'>詳細へ</a></div>
       
     </div>
     </thead>
