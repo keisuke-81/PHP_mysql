@@ -58,6 +58,7 @@ if (!$val) {
   $_SESSION['is_admin'] = $val['is_admin'];
   $_SESSION['user_id'] = $val['is_admin'];
   $_SESSION['username'] = $val['username'];
+  $_SESSION['password'] = $val['password'];
   //header("Location:review_input?id=.php");
   header("Location:review_input.php");
   exit();

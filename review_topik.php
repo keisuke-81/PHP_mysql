@@ -185,7 +185,7 @@ foreach ($result as $record) {  //HTMLの生成
                       
                         <h3>店舗名:<?=$row["shop_name"]?></h3>
                         <div class=""><img src="img/iine.png" alt="" width="50"><a href='like_create.php?user_id=<?="{$_SESSION['u_id']}"?>&like_id=<?=$id?>'>いいね！</a></div>
-                        <td>いいね！回数</td><?=$output2?>
+                        <td>いいね！回数</td>  <?=$output2?>
                         <div>(紹介してくれた人)
                         <br>  
                         <?=$row["reviewer_name"]?></div>

@@ -48,12 +48,13 @@ foreach ($result as $record) {  //HTMLの生成
       <div class=col-2>{$record['genre']}</div>
       <div class=col>{$record['text']}</div>
       <div class=col-2>{$record['name']}さん</div>
-  
+      <div class=col-2><a href='review_topik.php?id={$record['shops_no']}'>詳細へ</a></div>
     </div>
   
   ";
 }
-
+//echo($record['id']);
+//exit();
 // $view = "";
 // if($status == false){
 //   $error = $stmt->errorInfo();
@@ -114,10 +115,10 @@ foreach ($result as $record) {  //HTMLの生成
          <input type="hidden" name="username" value='<?="{$_SESSION['username']}"?>'>
       </div>
       <div>
-         管理者パスワード:<input type="password" name="password">
+        <input type="hidden" name="password" value='<?="{$_SESSION['password']}"?>'>
       </div>
       <div>
-        <button>管理者画面へLogin</button>
+        <button>管理者画面</button>（管理者のみ利用できます）
       </div>
      
     </fieldset>
@@ -187,11 +188,11 @@ foreach ($result as $record) {  //HTMLの生成
         <p class="cms-thumb col-4"><img src="img/logo2.jpg" width="300"></p>
          <!-- <div class="col-6">みんなの声</div> -->
         <div class="col-6">
-          <p>みんなの声</p>
+          <p>（最新のみんなの声）</p>
           <div class="row">
             <div class=col-3>(店名)</div>
             <div class=col-2>(ジャンル)</div>
-            <div class=col>(口コミ)</div>
+            <div class=col-3>(口コミ)</div>
             <div class=col-2>(投稿者)</div>
           </div>
           <br>
