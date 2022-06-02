@@ -225,6 +225,9 @@ foreach ($result as $record) {  //HTMLの生成
                        <button>入力する</button>
                       </div>
                     </fieldset>
+                        
+                        <a href="#" onclick="history.back(); return false;">前のページへ戻る</a>
+                        <br>
                         <a href='review_input.php'>トップ画面へ</a>
                       <!-- </form>
                       <img src="<?=$row['img']?>"> -->

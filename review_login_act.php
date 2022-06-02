@@ -47,7 +47,7 @@ try {
 $val = $stmt->fetch(PDO::FETCH_ASSOC);
 //var_dump($val);
 if (!$val) {
-  echo "<p>ログイン情報に誤りがあります</p>";
+  echo "<p>ログイン情報に誤りがあります。</p>";
   echo "<a href=review_login.php>ログイン</a>";
   exit();
 } else {

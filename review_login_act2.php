@@ -4,6 +4,7 @@
 
 session_start();
 include('functions.php');
+
 // データ受け取り
 
 
@@ -47,8 +48,8 @@ try {
 $val = $stmt->fetch(PDO::FETCH_ASSOC);
 //var_dump($val);
 if (!$val) {
-  echo "<p>ログイン情報に誤りがあります</p>";
-  echo "<a href=review_login.php>ログイン</a>";
+  echo "<p>管理者画面は管理者のみの利用となります。</p>";
+  echo '<a href="#" onclick="history.back(); return false;">前のページへ戻る</a>';
   exit();
 } else {
   $_SESSION = array();

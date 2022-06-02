@@ -1,6 +1,10 @@
 <?php
 include("shop_no.php");
-
+include("functions.php");
+session_start();
+check_session_id();
+$id =$_GET["id"];
+echo "GET:".$id;
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +43,7 @@ include("shop_no.php");
          <a href="review_read.php"><button class="btn btn-lg btn-warning" type="button">店舗データ管理</button></a> 
          <a href="review_read2.php"><button class="btn btn-lg btn-warning" type="button">口コミデータ管理</button></a> 
           <a href="user_file.php"><button class="btn btn-lg btn-warning" type="button">ユーザーデータ管理</button></a> 
+          <a href="review_input.php" >前のページへ戻る</a>
     </div>
         
       </div>
