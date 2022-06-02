@@ -4,15 +4,17 @@ session_start();
 check_session_id();
 
 $user_id = $_GET['user_id'];
-$shops_id = $_GET['shops_id'];
-//var_dump($shops_id);
+$like_id = $_GET['like_id'];
+//var_dump($_GET);
 //exit;
 $pdo = connect_to_db();
 
-$sql = 'SELECT COUNT(*) FROM like_table WHERE user_id=:user_id AND shops_id=:shops_id';
+
+//$sql = 'INSERT INTO like_table (id, user_id, shops_id, created_at) VALUES (NULL, :user_id, :shops_id, sysdate())';
+$sql = 'SELECT COUNT(*) FROM like_table WHERE user_id=:user_id AND like_id=:like_id';
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
-$stmt->bindValue(':shops_id', $shops_id, PDO::PARAM_STR);
+$stmt->bindValue(':like_id', $like_id, PDO::PARAM_STR);
 //var_dump($stmt);
 //exit;
 try {
@@ -29,14 +31,14 @@ $like_count = $stmt->fetchColumn();
 
 if ($like_count >0) {
   // いいねされている状態
-  $sql = 'DELETE FROM like_table WHERE user_id=:user_id AND shops_id=:shops_id';
+  $sql = 'DELETE FROM like_table WHERE user_id=:user_id AND like_id=:like_id';
 } else {
   // いいねされていない状態
-  $sql = 'INSERT INTO like_table (id, user_id, shops_id, created_at) VALUES (NULL, :user_id, :shops_id, sysdate())';
+  $sql = 'INSERT INTO like_table (id, user_id, like_id, created_at) VALUES (NULL, :user_id, :like_id, sysdate())';
 }
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
-$stmt->bindValue(':shops_id', $shops_id, PDO::PARAM_STR);
+$stmt->bindValue(':like_id', $like_id, PDO::PARAM_STR);
 
 try {
   $status = $stmt->execute();
@@ -48,6 +50,6 @@ try {
 
 // まずはデータ確認
 //var_dump($like_count);
-// exit();
-header("Location:review_topik.php?id=$shops_id'");
+//exit();
+header("Location:review_topik.php?id=$like_id");
 exit();

@@ -7,7 +7,7 @@ $id =$_GET["id"];
 echo "GET:".$id;
 
 $user_id=$_SESSION['u_id'];
-//echo ($_SESSION['u_id']);
+echo ($_SESSION['u_id']);
 //var_dump($_SESSION['u_id']) ;
 //exit();
 $day= date("Y年m月d日");
@@ -49,32 +49,37 @@ if($status == false){
 }
 //var_dump($row);
 //echo $row['img'];
-$sql2 = 'SELECT * FROM shops LEFT OUTER JOIN (SELECT shops_id, COUNT(shops_id) AS like_count FROM like_table GROUP BY shops_id) AS result_table ON shops.shops_id = result_table.shops_id';
-$stmt2 = $pdo->prepare($sql2);
-
+$sql = 'SELECT * FROM shops LEFT OUTER JOIN (SELECT like_id, COUNT(id) AS like_count FROM like_table GROUP BY like_id) AS result_table ON shops.shops_id = result_table.like_id WHERE  shops_id=:id';
+//$stmt->bindValue(':shop_name', $shop_name, PDO::PARAM_STR);
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(':id', $id, PDO::PARAM_INT);
 try {
-  $status2 = $stmt2->execute();
+  $status = $stmt->execute();
 } catch (PDOException $e) {
   echo json_encode(["sql error" => "{$e->getMessage()}"]);
   exit();
 }
 //$user_id = $_SESSION['user_id'];
-$result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
-$output2 = "";
-foreach ($result2 as $record2) {
-  $output2 .= "
-    <tr>
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
+//var_dump($result);
+//exit();
+$output2=$result["like_count"];
+// $output2 = "";
+// foreach ($result as $record) {
+//   $output2 .= "
+   
       
-      <td>{$record2["like_count"]}</td>
+//       {$record["like_count"]}
       
       
        
       
-    </tr>
-  ";
+    
+//   ";
 
-}
-//var_dump($output2);
+// }
+
+//var_dump(＄output2);
 //exit();
 
 ?>
@@ -179,8 +184,8 @@ foreach ($result as $record) {  //HTMLの生成
                       <p class="col pruducts-thumb "><img src="img2/<?=$row['img']?>" width="300"></p>
                       
                         <h3>店舗名:<?=$row["shop_name"]?></h3>
-                        <div class=""><img src="img/iine.png" alt="" width="50"><a href='like_create.php?user_id=<?="{$_SESSION['u_id']}"?>&shops_id=<?=$id?>'>like</a><td>回数</td></div>
-                        <?=$output2?>
+                        <div class=""><img src="img/iine.png" alt="" width="50"><a href='like_create.php?user_id=<?="{$_SESSION['u_id']}"?>&like_id=<?=$id?>'>いいね！</a></div>
+                        <td>いいね！回数</td><?=$output2?>
                         <div>(紹介してくれた人)
                         <br>  
                         <?=$row["reviewer_name"]?></div>
