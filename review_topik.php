@@ -6,7 +6,10 @@ check_session_id();
 $id =$_GET["id"];
 echo "GET:".$id;
 
-
+$user_id=$_SESSION['u_id'];
+//echo ($_SESSION['u_id']);
+//var_dump($_SESSION['u_id']) ;
+//exit();
 $day= date("Y年m月d日");
 //DB接続
 $dbn ='mysql:dbname=review_base;charset=utf8mb4;port=3306;host=localhost';
@@ -44,7 +47,39 @@ if($status == false){
     $row = $stmt->fetch();
 
 }
-echo $row['img'];
+//var_dump($row);
+//echo $row['img'];
+$sql2 = 'SELECT * FROM shops LEFT OUTER JOIN (SELECT shops_id, COUNT(shops_id) AS like_count FROM like_table GROUP BY shops_id) AS result_table ON shops.shops_id = result_table.shops_id';
+$stmt2 = $pdo->prepare($sql2);
+
+try {
+  $status2 = $stmt2->execute();
+} catch (PDOException $e) {
+  echo json_encode(["sql error" => "{$e->getMessage()}"]);
+  exit();
+}
+//$user_id = $_SESSION['user_id'];
+$result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+$output2 = "";
+foreach ($result2 as $record2) {
+  $output2 .= "
+    <tr>
+      
+      <td>{$record2["like_count"]}</td>
+      
+      
+       
+      
+    </tr>
+  ";
+
+}
+//var_dump($output2);
+//exit();
+
+?>
+<?php
+
 ?>
 <?php
 $dbn ='mysql:dbname=review_base;charset=utf8mb4;port=3306;host=localhost';
@@ -142,7 +177,10 @@ foreach ($result as $record) {  //HTMLの生成
                     <div class="margin_b">
                       ようこそ <?="{$_SESSION['username']}({$_SESSION['is_admin']})"?> さん
                       <p class="col pruducts-thumb "><img src="img2/<?=$row['img']?>" width="300"></p>
+                      
                         <h3>店舗名:<?=$row["shop_name"]?></h3>
+                        <div class=""><img src="img/iine.png" alt="" width="50"><a href='like_create.php?user_id=<?="{$_SESSION['u_id']}"?>&shops_id=<?=$id?>'>like</a><td>回数</td></div>
+                        <?=$output2?>
                         <div>(紹介してくれた人)
                         <br>  
                         <?=$row["reviewer_name"]?></div>

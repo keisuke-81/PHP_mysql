@@ -52,9 +52,13 @@ if (!$val) {
   exit();
 } else {
   $_SESSION = array();
+  
   $_SESSION['session_id'] = session_id();
+  $_SESSION['u_id']=$val['u_id'];
   $_SESSION['is_admin'] = $val['is_admin'];
+  $_SESSION['user_id'] = $val['is_admin'];
   $_SESSION['username'] = $val['username'];
+  //header("Location:review_input?id=.php");
   header("Location:review_input.php");
   exit();
 }
