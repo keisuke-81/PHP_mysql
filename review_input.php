@@ -107,7 +107,7 @@ foreach ($result as $record) {  //HTMLの生成
   </div>
   <div class="wrapper">
     <div class="container black">
-      ようこそ <?="{$_SESSION['username']}({$_SESSION['is_admin']})"?> さん
+      ようこそ <a href="user_page.php"><?="{$_SESSION['username']}({$_SESSION['is_admin']})"?></a> さん
        <!-- 管理者ログイン -->
     <form action="review_login_act2.php" method="POST">
     <fieldset>
